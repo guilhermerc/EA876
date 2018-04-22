@@ -1,1 +1,3 @@
-./main < tests/exemplo/exemplo_entrada.xml
+for file in tests/belem/*; do
+	cat "$file" | ./main | java Main
+done
