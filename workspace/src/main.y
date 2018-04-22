@@ -40,7 +40,7 @@ TAG_ABRE:
 	{
 		printf("YACC: TAG_ABRE\n");
 		printf("Empilhando %s\n", yylval.s);
-		empilhar(&pilha, yylval.s);
+		empilha(&pilha, yylval.s);
 	}
 
 TAG_FECHA:
@@ -48,7 +48,7 @@ TAG_FECHA:
 	MENOR BARRA TEXTO MAIOR
 	{
 		printf("YACC: TAG_FECHA\n");
-		no_pilha * aux = desempilhar(&pilha);
+		no_pilha * aux = desempilha(&pilha);
 		printf("Desempilhando %s\n", aux->string);
 	}
 
