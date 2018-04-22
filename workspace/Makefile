@@ -2,7 +2,7 @@
 
 COMPILER = gcc
 COMPILER_FLAGS = -Wextra -lfl
-DIRECTORY = src
+DIRECTORY = src/c
 FILENAME = $(DIRECTORY)/main.c
 YYTAB_H = $(DIRECTORY)/y.tab.h
 YYTAB_C = $(DIRECTORY)/y.tab.c
