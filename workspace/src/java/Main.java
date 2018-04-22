@@ -12,6 +12,8 @@ public class Main
 
 		String leitura = "";
 		boolean achou = false;
+		boolean achou_pai = false;
+		int indice_pai = -1;
 		int indice = -1;
 
 		while(stdin.hasNext())
@@ -23,9 +25,36 @@ public class Main
 					{
 						leitura = stdin.nextLine();
 						pilha.push(leitura);
-						indice = Tags.procuraString(leitura);
-						if(indice != -1)
-							achou = true;
+						// se não achou um pai na última
+						// execução
+						if(!achou_pai)
+						{
+							indice = Tags.procuraString(leitura, Tags.tags_padrao);
+							if(indice != -1)	
+								achou = true;
+							else
+							{
+								indice = Tags.procuraString(leitura, Tags.tags_encad_pai);
+								if(indice != -1)
+								{
+									achou_pai = true;
+									indice_pai = indice;
+								}
+							}
+						}
+						// se achou um pai na última
+						// execução
+						else
+						{
+							indice = Tags.procuraString(leitura, Tags.tags_encad_filho);
+							if(indice != -1)
+							{
+								indice = indice_pai; 
+								achou_pai = false;
+								achou = true;
+							}
+								
+						}
 						break;
 					}
 				case 1:

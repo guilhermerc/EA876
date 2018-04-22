@@ -1,17 +1,29 @@
-import java.util.Arrays;
 import java.util.Objects;
 
 public class Tags
 {
-	public static String[][] tags =
+	public static String[][] tags_padrao =
 	{	
 		{"TOMADOR_CIDADE"},
 		{"PRESTADOR_CIDADE"},
-		{"VALOR_SERVICO"},
-		{"VALOR_ISS"}
+		{"VALOR_SERVICO", "ValorServicos", "ns3:ValorServicos"},
+		{"VALOR_ISS", "ValorIss", "ns3:ValorIss"}
+
 	};
 
-	public static int procuraString(String str)
+	public static String[][] tags_encad_pai =
+	{
+		{"OrgaoGerador", "ns3:OrgaoGerador"},
+		{"PrestadorServico", "ns3:PrestadorServico"}
+	};
+	
+	public static String[][] tags_encad_filho =
+	{
+		{"CodigoMunicipio", "ns3:CodigoMunicipio"},
+		{"CodigoMunicipio", "ns3:CodigoMunicipio"}
+	};
+
+	public static int procuraString(String str, String[][] tags)
 	{
 		int indice = -1;
 		boolean encontrou = false;

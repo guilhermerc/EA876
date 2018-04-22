@@ -34,7 +34,7 @@ TAG_ABRE:
 		//printf("YACC: TAG_ABRE\n");
 		printf("0\n");
 		printf("%s\n", yylval.s);
-		empilha(&pilha, yylval.s);
+		//empilha(&pilha, yylval.s);
 	}
 
 TAG_FECHA:
@@ -43,7 +43,7 @@ TAG_FECHA:
 	{
 		printf("2\n");
 		//printf("%s\n", yylval.s);
-		no_pilha * aux = desempilha(&pilha);
+		//no_pilha * aux = desempilha(&pilha);
 		//printf("%s\n", aux->string);
 	}
 
