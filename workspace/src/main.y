@@ -38,8 +38,8 @@ TAG_ABRE:
 	
 	MENOR TEXTO MAIOR
 	{
-		printf("YACC: TAG_ABRE\n");
-		printf("Empilhando %s\n", yylval.s);
+		//printf("YACC: TAG_ABRE\n");
+		printf("PUSH %s\n", yylval.s);
 		empilha(&pilha, yylval.s);
 	}
 
@@ -47,31 +47,31 @@ TAG_FECHA:
 	
 	MENOR BARRA TEXTO MAIOR
 	{
-		printf("YACC: TAG_FECHA\n");
+		//printf("YACC: TAG_FECHA\n");
 		no_pilha * aux = desempilha(&pilha);
-		printf("Desempilhando %s\n", aux->string);
+		printf("POP %s\n", aux->string);
 	}
 
 CONTEUDO:
 
 	TEXTO
 	{
-		printf("YACC: CONTEUDO\n");
+		//printf("YACC: CONTEUDO\n");
 	}
 	| CADEIA
 	{
-		printf("YACC: CONTEUDO\n");
+		//printf("YACC: CONTEUDO\n");
 	}
 	| CONTEUDO CADEIA
 	{
-		printf("YACC: CONTEUDO\n");
+		//printf("YACC: CONTEUDO\n");
 	}
 
 CADEIA:
 
 	TAG_ABRE CONTEUDO TAG_FECHA 
 	{
-		printf("YACC: CADEIA\n");
+		//printf("YACC: CADEIA\n");
 	}
 	| TAG_ABRE TAG_FECHA
 

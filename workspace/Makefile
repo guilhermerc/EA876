@@ -1,4 +1,5 @@
-# Macros para compilação do projeto
+# Macros para compilação
+
 COMPILER = gcc
 COMPILER_FLAGS = -Wextra -lfl
 DIRECTORY = src
@@ -17,14 +18,14 @@ BISON = bison
 FLEX = flex
 
 # Macros para teste
+
 BASH = sh
 TEST_SCRIPT = test.sh
-VERBOSE ?= 1
 
-# Macros para construcao do zip
+# Macros para construção do zip
 ZIP = zip
-USERNAME ?= $(USER)
-ZIPFILE = $(USERNAME).zip
+NOME_PROJETO = trabalho_01
+ZIPFILE = $(NOME_PROJETO).zip
 EXTENSIONS = *.c *.h *.in *.out *.sh
 
 .PHONY: depend clean
@@ -43,11 +44,18 @@ $(LEXOUT): $(LEXFILE) $(YYTAB_C)
 $(YYTAB_C): $(YACCFILE)
 	$(BISON) -o$(YYTAB_C) -dy $(YACCFILE)
 
-test:all
-	$(BASH) $(TEST_SCRIPT) $(TARGET) $(VERBOSE)
+# Executa o script de teste
 
-zip:clean
-	$(ZIP) -R $(ZIPFILE)  Makefile $(EXTENSIONS)
+test: all
+	$(BASH) $(TEST_SCRIPT)
+
+# Compactação dos arquivos do projeto em zip
+# Executa a limpeza dos arquivos antes de "zipar"
+
+zip: clean
+	$(ZIP) -R $(ZIPFILE) Makefile $(EXTENSIONS)
+
+# Limpeza dos arquivos do projeto gerados pelo make
 
 clean:
 	$(RM) $(YYTAB_C)

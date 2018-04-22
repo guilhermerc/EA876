@@ -10,24 +10,24 @@ void yyerror(char * s);
 %%
 
 \<	{
-		printf("FLEX: <\n");
+		//printf("FLEX: <\n");
 		return MENOR;
 	}
 
 \>	{
-		printf("FLEX: >\n");
+		//printf("FLEX: >\n");
 		return MAIOR;
 	}
 
 [/]	{
-		printf("FLEX: /\n");
+		//printf("FLEX: /\n");
 		return BARRA;
 	}
 
 [\n\ \t]+	;	
 
 [^\<^\>^/][^\<^\>]*	{
-				printf("FLEX: %s\n", yytext);
+				//printf("FLEX: %s\n", yytext);
 				yylval.s = strdup(yytext);
 				return TEXTO;
 			}	
