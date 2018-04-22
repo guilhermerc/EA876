@@ -1,5 +1,5 @@
 import java.util.Scanner;
-import java.util.ArrayList;
+import java.util.Stack;
 
 public class Main
 {
@@ -7,37 +7,39 @@ public class Main
 	{
 		String[] saida = new String[4];
 
+		Stack pilha = new Stack();
 		Scanner stdin = new Scanner(System.in);
 
-		Tags municipio_gerador = new Tags();
-		Tags municipio_prestador = new Tags();
-		Tags valor_do_servico = new Tags();
-		Tags iss_retido = new Tags();
+		String leitura = "";
+		boolean achou = false;
+		int indice = -1;
 
-		municipio_gerador.tags.add("TOMADOR_CIDADE");
-		municipio_prestador.tags.add("PRESTADOR_CIDADE");
-		valor_do_servico.tags.add("VALOR_SERVICO");
-		iss_retido.tags.add("VALOR_ISS");
-		
 		while(stdin.hasNext())
 		{
-			String leitura = stdin.nextLine();
-
-			if(municipio_gerador.tags.contains(leitura))
+			int numero = stdin.nextInt(); stdin.nextLine();
+			switch(numero)
 			{
-				saida[0] = stdin.nextLine();
-			}		
-			else if(municipio_prestador.tags.contains(leitura))
-			{
-				saida[1] = stdin.nextLine();
-			}
-			else if(valor_do_servico.tags.contains(leitura))
-			{
-				saida[2] = stdin.nextLine();
-			}
-			else if(iss_retido.tags.contains(leitura))
-			{
-				saida[3] = stdin.nextLine();
+				case 0:
+					{
+						leitura = stdin.nextLine();
+						pilha.push(leitura);
+						indice = Tags.procuraString(leitura);
+						if(indice != -1)
+							achou = true;
+						break;
+					}
+				case 1:
+					{
+						leitura = stdin.nextLine();
+						if(achou == true)
+							saida[indice] = leitura;
+						achou = false;
+						break;
+					}
+				case 2:
+					{
+						pilha.pop();
+					}
 			}
 		}
 
@@ -45,9 +47,9 @@ public class Main
 		{
 			System.out.print(saida[i]);
 			if(i != saida.length - 1)
-				System.out.print(", ");
+				System.out.print("-");
 
 		}
 		System.out.print("\n");
-	}
+	}	
 }

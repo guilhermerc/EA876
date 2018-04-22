@@ -73,4 +73,4 @@ clean:
 	$(RM) ./$(TARGET_C)
 	$(RM) $(DIRECTORY_C)/*.o
 	$(RM) ./$(ZIPFILE)
-	$(RM) $(DIRECTORY_JAVA)/*.class
+	$(RM) ./*.class
