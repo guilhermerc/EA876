@@ -1,21 +1,27 @@
 # Macros para compilação
 
-COMPILER = gcc
-COMPILER_FLAGS = -Wextra -lfl
-DIRECTORY = src/c
-FILENAME = $(DIRECTORY)/main.c
-YYTAB_H = $(DIRECTORY)/y.tab.h
-YYTAB_C = $(DIRECTORY)/y.tab.c
-LEXOUT = $(DIRECTORY)/lex.yy.c
-YACCFILE = $(DIRECTORY)/main.y
-LEXFILE = $(DIRECTORY)/main.l
-PILHA_BIB_C = $(DIRECTORY)/pilha_bib.c
-PILHA_BIB_H = $(DIRECTORY)/pilha_bib.h
-PILHA_BIB_O = $(DIRECTORY)/pilha_bib.o
-TARGET = main
+C_COMPILER = gcc
+C_COMPILER_FLAGS = -Wextra -lfl
+DIRECTORY_C = src/c
+FILENAME = $(DIRECTORY_C)/main.c
+YYTAB_H = $(DIRECTORY_C)/y.tab.h
+YYTAB_C = $(DIRECTORY_C)/y.tab.c
+LEXOUT = $(DIRECTORY_C)/lex.yy.c
+YACCFILE = $(DIRECTORY_C)/main.y
+LEXFILE = $(DIRECTORY_C)/main.l
+PILHA_BIB_C = $(DIRECTORY_C)/pilha_bib.c
+PILHA_BIB_H = $(DIRECTORY_C)/pilha_bib.h
+PILHA_BIB_O = $(DIRECTORY_C)/pilha_bib.o
+TARGET_C = main
 BJS = $(SRCS:.c=.o)
 BISON = bison
 FLEX = flex
+
+JAVA_COMPILER = javac
+JAVA_COMPILER_FLAGS = -d .
+DIRECTORY_JAVA = src/java
+JAVA_FILES = $(DIRECTORY_JAVA)/*.java
+TARGET_JAVA = *.class
 
 # Macros para teste
 
@@ -30,13 +36,16 @@ EXTENSIONS = *.c *.h *.in *.out *.sh
 
 .PHONY: depend clean
 
-all:$(TARGET)
+all: $(TARGET_C) $(TARGET_JAVA)
 
-$(TARGET): $(PILHA_BIB_O) $(LEXOUT) $(YYTAB_C)
-	$(COMPILER) -o$(TARGET) $(LEXOUT) $(YYTAB_C) $(PILHA_BIB_O) $(COMPILER_FLAGS)
+$(TARGET_JAVA): $(JAVA_FILES)
+	$(JAVA_COMPILER) $(JAVA_COMPILER_FLAGS) $(JAVA_FILES)
+
+$(TARGET_C): $(PILHA_BIB_O) $(LEXOUT) $(YYTAB_C)
+	$(C_COMPILER) -o$(TARGET_C) $(LEXOUT) $(YYTAB_C) $(PILHA_BIB_O) $(C_COMPILER_FLAGS)
 
 $(PILHA_BIB_O): $(PILHA_BIB_C) $(PILHA_BIB_H)
-	$(COMPILER) -c $(PILHA_BIB_C) -o$(PILHA_BIB_O)
+	$(C_COMPILER) -c $(PILHA_BIB_C) -o$(PILHA_BIB_O)
 
 $(LEXOUT): $(LEXFILE) $(YYTAB_C)
 	$(FLEX) -o$(LEXOUT) $(LEXFILE)
@@ -61,6 +70,7 @@ clean:
 	$(RM) $(YYTAB_C)
 	$(RM) $(YYTAB_H)
 	$(RM) $(LEXOUT)
-	$(RM) ./$(TARGET)
-	$(RM) $(DIRECTORY)/*.o
+	$(RM) ./$(TARGET_C)
+	$(RM) $(DIRECTORY_C)/*.o
 	$(RM) ./$(ZIPFILE)
+	$(RM) $(DIRECTORY_JAVA)/*.class
