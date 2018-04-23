@@ -1,3 +1,4 @@
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -11,6 +12,7 @@ public class Main
 		Scanner stdin = new Scanner(System.in);
 
 		String leitura = "";
+		String leitura_atual = "";
 		boolean achou = false;
 		boolean achou_pai = false;
 		int indice_pai = -1;
@@ -23,7 +25,16 @@ public class Main
 			{
 				case 0:
 					{
-						leitura = stdin.nextLine();
+						leitura = "";
+						leitura_atual = "";
+						while(true)
+						{
+							leitura_atual = stdin.nextLine();
+							if(!Objects.equals(leitura_atual, "0!"))
+								leitura += leitura_atual;
+							else
+								break;
+						}
 						pilha.push(leitura);
 						// se não achou um pai na última
 						// execução
@@ -59,7 +70,16 @@ public class Main
 					}
 				case 1:
 					{
-						leitura = stdin.nextLine();
+						leitura = "";
+						leitura_atual = "";
+						while(true)
+						{
+							leitura_atual = stdin.nextLine();
+							if(!Objects.equals(leitura_atual, "1!"))
+								leitura += leitura_atual;
+							else
+								break;
+						}
 						if(achou == true)
 							saida[indice] = leitura;
 						achou = false;

@@ -4,7 +4,8 @@ public class Tags
 {
 	public static String[][] tags_padrao =
 	{	
-		{"TOMADOR_CIDADE"},
+		//{"TOMADOR_CIDADE"},
+		{""},
 		{"PRESTADOR_CIDADE"},
 		{"VALOR_SERVICO", "ValorServicos", "ns3:ValorServicos"},
 		{"VALOR_ISS", "ValorIss", "ns3:ValorIss"}
@@ -19,7 +20,6 @@ public class Tags
 	
 	public static String[][] tags_encad_filho =
 	{
-		{"CodigoMunicipio", "ns3:CodigoMunicipio"},
 		{"CodigoMunicipio", "ns3:CodigoMunicipio"}
 	};
 

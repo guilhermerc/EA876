@@ -34,6 +34,7 @@ TAG_ABRE:
 		//printf("YACC: TAG_ABRE\n");
 		printf("0\n");
 		printf("%s\n", yylval.s);
+		printf("0!\n");
 		//empilha(&pilha, yylval.s);
 	}
 
@@ -53,6 +54,7 @@ CONTEUDO:
 	{
 		printf("1\n");
 		printf("%s\n", yylval.s);
+		printf("1!\n");
 		//printf("YACC: CONTEUDO\n");
 	}
 	| CADEIA
