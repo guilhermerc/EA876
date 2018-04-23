@@ -16,14 +16,12 @@ with open(input_file, newline='') as csv_file:
 
     for line in sys.stdin:
         fields = line.split('-')
+        fields[3].rstrip()
         fields[2].replace(',', '.')
         fields[3].replace(',', '.')
         for row in database:
             if fields[0] == row[1]:
-                print("ACHEI")
                 fields[0] = row[0]
             if fields[1] == row[1]:
-                print("ACHEI")
                 fields[1] = row[0]
-
-#print(campos[0] + "," + campos[1] + "," + campos[2] + "," + campos[3])
+        print(fields[0] + "," + fields[1] + "," + fields[2] + "," + fields[3])
