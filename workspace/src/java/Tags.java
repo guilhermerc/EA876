@@ -6,21 +6,21 @@ public class Tags
 	{	
 		//{"TOMADOR_CIDADE"},
 		{""},
-		{"PRESTADOR_CIDADE"},
-		{"VALOR_SERVICO", "ValorServicos", "ns3:ValorServicos"},
-		{"VALOR_ISS", "ValorIss", "ns3:ValorIss"}
+		{"PRESTADOR_CIDADE", "tsMunPtd"},
+		{"VALOR_SERVICO", "ValorServicos", "ns3:ValorServicos", "tsVlrSvc", "valorTotalServico"},
+		{"VALOR_ISS", "ValorIss", "ns3:ValorIss", "tsVlrISSRet", "valorTotalISS"}
 
 	};
 
 	public static String[][] tags_encad_pai =
 	{
 		{"OrgaoGerador", "ns3:OrgaoGerador"},
-		{"PrestadorServico", "ns3:PrestadorServico"}
+		{"PrestadorServico", "ns3:PrestadorServico", "prestador"}
 	};
 	
 	public static String[][] tags_encad_filho =
 	{
-		{"CodigoMunicipio", "ns3:CodigoMunicipio"}
+		{"CodigoMunicipio", "ns3:CodigoMunicipio", "codigoMunipio"}
 	};
 
 	public static int procuraString(String str, String[][] tags)
