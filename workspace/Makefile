@@ -1,4 +1,4 @@
-# Macros para compilação
+#Macros para compilação
 
 C_COMPILER = gcc
 C_COMPILER_FLAGS = -Wextra -lfl
@@ -29,7 +29,7 @@ TEST_SCRIPT = test.sh
 ZIP = zip
 NOME_PROJETO = trabalho_01
 ZIPFILE = $(NOME_PROJETO).zip
-EXTENSIONS = *.c *.h *.in *.out *.sh
+EXTENSIONS = *.c *.h *.java *.py *.csv *.xml *.sh
 
 .PHONY: depend clean
 
