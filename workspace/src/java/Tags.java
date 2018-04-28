@@ -4,8 +4,8 @@ public class Tags
 {
 	public static String[][] tags_padrao =
 	{	
-		//{"TOMADOR_CIDADE"},
-		{""},
+		// Assumindo que o gerador é o mesmo que o tomador
+		{"TOMADOR_CIDADE", "tsMunTmd"},
 		{"PRESTADOR_CIDADE", "tsMunPtd"},
 		{"VALOR_SERVICO", "ValorServicos", "ns3:ValorServicos", "tsVlrSvc", "valorTotalServico"},
 		{"VALOR_ISS", "ValorIss", "ns3:ValorIss", "tsVlrISSRet", "valorTotalISS"}
@@ -14,13 +14,13 @@ public class Tags
 
 	public static String[][] tags_encad_pai =
 	{
-		{"OrgaoGerador", "ns3:OrgaoGerador"},
+		{"OrgaoGerador", "ns3:OrgaoGerador", "tomador", "Tomador"},
 		{"PrestadorServico", "ns3:PrestadorServico", "prestador"}
 	};
 	
 	public static String[][] tags_encad_filho =
 	{
-		{"CodigoMunicipio", "ns3:CodigoMunicipio", "codigoMunipio"}
+		{"CodigoMunicipio", "ns3:CodigoMunicipio", "descricaoMunicipio"}
 	};
 
 	public static int procuraString(String str, String[][] tags)

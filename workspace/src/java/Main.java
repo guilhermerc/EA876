@@ -1,6 +1,5 @@
 import java.util.Objects;
 import java.util.Scanner;
-import java.util.Stack;
 
 public class Main
 {
@@ -8,7 +7,6 @@ public class Main
 	{
 		String[] saida = new String[4];
 
-		Stack pilha = new Stack();
 		Scanner stdin = new Scanner(System.in);
 
 		String leitura = "";
@@ -35,7 +33,6 @@ public class Main
 							else
 								break;
 						}
-						pilha.push(leitura);
 						// se não achou um pai na última
 						// execução
 						if(!achou_pai)
@@ -85,10 +82,7 @@ public class Main
 						achou = false;
 						break;
 					}
-				case 2:
-					{
-						pilha.pop();
-					}
+				default:	
 			}
 		}
 
