@@ -3,9 +3,6 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
-#include "pilha_bib.h"
-
-no_pilha * pilha;
 
 void yyerror(char * s);
 int yylex(void);
@@ -44,7 +41,6 @@ TAG_FECHA:
 	{
 		printf("2\n");
 		//printf("%s\n", yylval.s);
-		//no_pilha * aux = desempilha(&pilha);
 		//printf("%s\n", aux->string);
 	}
 

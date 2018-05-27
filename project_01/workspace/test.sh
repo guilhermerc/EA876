@@ -1,3 +1,11 @@
+for dir_ in tests/*; do
+	echo "Executando na pasta '$dir_'"
+	echo ------------------------------
+	for file_ in "${dir}_/*.xml"; do
+		cat "$file_" | ./main | java Main | python3 tratamento_final.py codigo_municipal.csv
+	done
+done
+
 echo
 echo "Executando na pasta 'belem'"
 echo ------------------------------
@@ -36,7 +44,7 @@ done
 echo
 echo "Executando na pasta 'rio_de_janeiro'"
 echo ------------------------------
-for file in tests/rio_de_janeiro/*; do
+for file in tests/rio_de_janeiro/*; do 
 	cat "$file" | ./main | java Main | python3 tratamento_final.py codigo_municipal.csv 
 done
 
