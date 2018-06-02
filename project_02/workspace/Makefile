@@ -1,14 +1,17 @@
 #Macros para compilação
 
 C_COMPILER = gcc
-C_COMPILER_FLAGS = -Wextra -lfl
-DIRECTORY_C = src/c
-FILENAME = $(DIRECTORY_C)/main.c
-YYTAB_H = $(DIRECTORY_C)/y.tab.h
-YYTAB_C = $(DIRECTORY_C)/y.tab.c
-LEXOUT = $(DIRECTORY_C)/lex.yy.c
-YACCFILE = $(DIRECTORY_C)/main.y
-LEXFILE = $(DIRECTORY_C)/main.l
+C_COMPILER_FLAGS = -Wextra
+LIBRARY_DIR = lib
+IMAGE_PROCESSING_H = $(LIBRARY_DIR)/image_processing.h
+IMAGE_PROCESSING.C = $(LIBRARY_DIR)/image_processing.c
+SINGLETHREAD_LIB.H = $(LIBRARY_DIR)/singlethread_lib.h
+SINGLETHREAD_LIB.C = $(LIBRARY_DIR)/singlethread_lib.c
+MULTITHREAD_LIB.H = $(LIBRARY_DIR)/multithread_lib.h
+MULTITHREAD_LIB.C = $(LIBRARY_DIR)/multithread_lib.c
+MULTIPROCESS_LIB.H = $(LIBRARY_DIR)/multiprocess_lib.h
+MULTIPROCESS_LIB.C = $(LIBRARY_DIR)/multiprocess_lib.c
+LEXFILE = $(LIBRARY_DIR)/main.l
 TARGET_C = main
 BJS = $(SRCS:.c=.o)
 BISON = bison
@@ -65,6 +68,6 @@ clean:
 	$(RM) $(YYTAB_H)
 	$(RM) $(LEXOUT)
 	$(RM) ./$(TARGET_C)
-	$(RM) $(DIRECTORY_C)/*.o
+	$(RM) $(LIBRARY_DIR)/*.o
 	$(RM) ./$(ZIPFILE)
 	$(RM) ./*.class
