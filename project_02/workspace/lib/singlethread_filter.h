@@ -1,5 +1,0 @@
-#ifndef SINGLETHREAD_FILTER_H
-#define SINGLETHREAD_FILTER_H
-
-
-#endif
