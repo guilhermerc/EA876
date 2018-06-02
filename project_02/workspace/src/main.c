@@ -1,33 +1,12 @@
-#include "image_processing.h"
+#include "../lib/image_processing.h"
 
-int main()
+image img = open_image("../tests/aesthetics_vaporwave.jpg");
+image tmp = img;
+
+int main(int argc, char ** argv)
 {
-	imagem img;
-	img = abrir_imagem("aesthetics_vaporwave.jpg");
-	unsigned int tmp;
 
-	float alpha = 0.998;
-
-	for (int i=0; i<(img.width); i++)
-	{
-		for (int j=0; j<(img.height); j++)
-		{
-			/* Ganho no canal R */
-			tmp = img.r[j*img.width + i] * 2;
-			if (tmp > 255) tmp=255;
-			img.r[j*img.width + i] = tmp;
-
-			/* Reducao no canal B */
-			img.b[j*img.width + i] /= 2;
-
-			/* Blur exponencial no canal G */
-			if (i!=0) {
-				img.g[j*img.width + i] = (1-alpha)*img.g[j*img.width + i] +(alpha)* img.g[j*img.width + i -1];
-			}
-		}
-	}
-
-	salvar_imagem("aesthetics_vaporwave-out.jpg", &img);
-	liberar_imagem(&img);
+	save_image("aesthetics_vaporwave-out.jpg", &img);
+	free_image(&img);
 	return 0;
 }
