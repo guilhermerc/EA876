@@ -1,10 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdint.h>
+#include <FreeImage.h>
 
 #include "image_io_lib.h"
-
-#include <FreeImage.h>
 
 image open_image(char *nome_do_arquivo) {
     FIBITMAP *bitmapIn;
