@@ -1,6 +1,8 @@
 #ifndef CONVOLUTION_LIB_H
 #define CONVOLUTION_LIB_H
 
+#include <stdint.h>
+
 typedef struct
 {
     uint16_t order;
