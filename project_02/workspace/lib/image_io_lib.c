@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-#include "image_processing.h"
+#include "image_io_lib.h"
 
 #include <FreeImage.h>
 
@@ -10,7 +10,7 @@ image open_image(char *nome_do_arquivo) {
     FIBITMAP *bitmapIn;
     int x, y;
     RGBQUAD color;
-    imagem I;
+    image I;
 
     bitmapIn = FreeImage_Load(FIF_JPEG, nome_do_arquivo, 0);
 
@@ -52,7 +52,7 @@ void free_image(image * i)
     free(i->b);
 }
 
-void save_image(char *nome_do_arquivo, imagem *I) {
+void save_image(char *nome_do_arquivo, image *I) {
     FIBITMAP *bitmapOut;
     RGBQUAD color;
 
@@ -73,9 +73,4 @@ void save_image(char *nome_do_arquivo, imagem *I) {
     }
 
     FreeImage_Save(FIF_JPEG, bitmapOut, nome_do_arquivo, JPEG_DEFAULT);
-}
-
-uint64_t array_index(image img, uint16_t row, uint16_t column)
-{
-    return row * img.width + column;	
 }
