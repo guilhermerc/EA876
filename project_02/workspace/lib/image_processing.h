@@ -9,7 +9,8 @@ typedef struct
 
 typedef struct
 {
-	unsigned int order;
+	uint16_t order;
+        uint16_t divider;
 	float ** convm;
 } conv_matrix;
 
