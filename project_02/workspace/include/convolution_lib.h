@@ -8,6 +8,7 @@ typedef struct
     float ** matrix;
 } conv_matrix;
 
-double calculate_conv_row(image * img, float * channel, image * tmp, conv_matrix
-        * cm, uint16_t pixel_row, uint16_t pixel_column, uint16_t cm_row);
+double calculate_conv_row(image img, float * channel, image * tmp, conv_matrix
+        cm, uint16_t pixel_row, uint16_t pixel_column, uint16_t cm_row);
+
 #endif
