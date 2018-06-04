@@ -1,6 +1,6 @@
 #ifndef MULTITHREAD_FILTER_H 
 #define MULTITHREAD_FILTER_H 
 
-void apply_multithread_filter();
+void multithread_filter(image img, image tmp, conv_matrix cm);
 
 #endif
