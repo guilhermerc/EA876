@@ -1,5 +1,5 @@
-#ifndef IMAGE_PROCESSING_H
-#define IMAGE_PROCESSING_H
+#ifndef IMAGE_IO_LIB_H
+#define IMAGE_IO_LIB_H
 
 typedef struct
 {
