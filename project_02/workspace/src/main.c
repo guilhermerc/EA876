@@ -4,6 +4,7 @@
 
 #include "image_io_lib.h"
 #include "convolution_lib.h"
+#include "singlethread_filter_lib.h"
 #include "multithread_filter_lib.h"
 
 int main(int argc, char ** argv)
@@ -38,32 +39,18 @@ int main(int argc, char ** argv)
             if(strcmp(argv[1], "-s") == 0)
             {    
                 printf("Singlethread mode!\n");
-
-                double sum = 0.0;
-                for(int i = 0; i < img.height; i++)
-                {
-                    for(int j = 0; j < img.width; j++)
-                    {
-                        for(int k = 0; k < cm.order; k++)
-                            sum += calculate_conv_row(img, img.r, cm, i, j, k); 
-                        tmp.r[array_matrix_index(tmp, i, j)] = (float) sum / cm.divider;
-                        sum = 0.0;
-                        for(int k = 0; k < cm.order; k++)
-                            sum += calculate_conv_row(img, img.g, cm, i, j, k); 
-                        tmp.g[array_matrix_index(tmp, i, j)] = (float) sum / cm.divider;
-                        sum = 0.0;
-                        for(int k = 0; k < cm.order; k++)
-                            sum += calculate_conv_row(img, img.b, cm, i, j, k); 
-                        tmp.b[array_matrix_index(tmp, i, j)] = (float) sum / cm.divider;
-                        sum = 0.0;
-                    }
-                }
+                singlethread_filter();
             }
             else if(strcmp(argv[1], "-m") == 0)
             {
-                N_THREADS = atoi(argv[2]);
-                printf("Multithread mode with %d threads!\n", N_THREADS);
-                multithread_filter();
+                if(argc > 2)    
+                {
+                    N_THREADS = atoi(argv[2]);
+                    printf("Multithread mode with %d threads!\n", N_THREADS);
+                    multithread_filter();
+                }
+                else
+                    printf("Invalid usage. Please, insert the number of threads as a third argument.\n");
             }
         }
         else
