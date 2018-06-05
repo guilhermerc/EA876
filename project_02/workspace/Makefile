@@ -8,18 +8,19 @@ SRC_DIR = src
 LIBRARY_DIR = lib
 INCLUDE_DIR = include
 MAIN_C = $(SRC_DIR)/main.c
-IMAGE_IO_LIB_H = $(LIBRARY_DIR)/image_io_lib.h
+# IMAGE_IO_LIB_H = $(LIBRARY_DIR)/image_io_lib.h
 IMAGE_IO_LIB_C = $(LIBRARY_DIR)/image_io_lib.c
-IMAGE_IO_LIB_0 = $(LIBRARY_DIR)/image_io_lib.o
+IMAGE_IO_LIB_O = $(LIBRARY_DIR)/image_io_lib.o
 # SINGLETHREAD_LIB.H = $(LIBRARY_DIR)/singlethread_lib.h
 # SINGLETHREAD_LIB.C = $(LIBRARY_DIR)/singlethread_lib.c
-# MULTITHREAD_LIB.H = $(LIBRARY_DIR)/multithread_lib.h
-# MULTITHREAD_LIB.C = $(LIBRARY_DIR)/multithread_lib.c
+# MULTITHREAD_FILTER_LIB.H = $(LIBRARY_DIR)/multithread_filter_lib.h
+MULTITHREAD_FILTER_LIB_C = $(LIBRARY_DIR)/multithread_filter_lib.c
+MULTITHREAD_FILTER_LIB_O = $(LIBRARY_DIR)/multithread_filter_lib.o
 # MULTIPROCESS_LIB.H = $(LIBRARY_DIR)/multiprocess_lib.h
 # MULTIPROCESS_LIB.C = $(LIBRARY_DIR)/multiprocess_lib.c
-CONVOLUTION_LIB_H = $(LIBRARY_DIR)/convolution_lib.h
+# CONVOLUTION_LIB_H = $(LIBRARY_DIR)/convolution_lib.h
 CONVOLUTION_LIB_C = $(LIBRARY_DIR)/convolution_lib.c
-CONVOLUTION_LIB_0 = $(LIBRARY_DIR)/convolution_lib.o
+CONVOLUTION_LIB_O = $(LIBRARY_DIR)/convolution_lib.o
 TARGET_C = main 
 BJS = $(SRCS:.c=.o)
 
@@ -38,14 +39,17 @@ EXTENSIONS = *.c *.h *.sh
 # Rule for compiling the project
 all: $(TARGET_C)
 
-$(TARGET_C): $(CONVOLUTION_LIB_0) $(IMAGE_IO_LIB_0) $(MAIN_C)
-	$(CC) -o$(TARGET_C) $(MAIN_C) $(CONVOLUTION_LIB_0) $(IMAGE_IO_LIB_0) $(CC_FLAGS) -I$(INCLUDE_DIR) -lfreeimage
+$(TARGET_C): $(MAIN_C) $(CONVOLUTION_LIB_O) $(MULTITHREAD_FILTER_LIB_O) $(IMAGE_IO_LIB_O)
+	$(CC) -o$@ $(MAIN_C) $(CONVOLUTION_LIB_O) $(MULTITHREAD_FILTER_LIB_O) $(IMAGE_IO_LIB_O) $(CC_FLAGS) -I$(INCLUDE_DIR) -lfreeimage -lpthread
 
-$(CONVOLUTION_LIB_0): $(CONVOLUTION_LIB_C)
-	$(CC) -c $< $(CC_FLAGS) -I$(INCLUDE_DIR) -o $@	
+$(CONVOLUTION_LIB_O): $(CONVOLUTION_LIB_C)
+	$(CC) -c $< $(CC_FLAGS) -I$(INCLUDE_DIR) -o$@ 
 
-$(IMAGE_IO_LIB_0): $(IMAGE_IO_LIB_C)
-	$(CC) -c $< $(CC_FLAGS) -I$(INCLUDE_DIR) -o $@	
+$(MULTITHREAD_FILTER_LIB_O): $(MULTITHREAD_FILTER_LIB_C)
+	$(CC) -c $< $(CC_FLAGS) -I$(INCLUDE_DIR) -lpthread -o$@ 
+
+$(IMAGE_IO_LIB_O): $(IMAGE_IO_LIB_C)
+	$(CC) -c $< $(CC_FLAGS) -I$(INCLUDE_DIR) -o$@	
 
 # Rule for executing test script
 test: all
