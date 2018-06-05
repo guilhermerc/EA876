@@ -11,6 +11,8 @@ typedef struct
 } conv_matrix;
 
 conv_matrix cm;
+// This is the convolution matrix that will apply the desired filter to an
+// image.
 
 uint64_t array_matrix_index(image img, uint16_t row, uint16_t column);
 double calculate_conv_row(image img, float * channel, conv_matrix cm, uint16_t

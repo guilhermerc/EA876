@@ -1,6 +1,12 @@
 #ifndef MULTITHREAD_FILTER_H 
 #define MULTITHREAD_FILTER_H 
 
-void multithread_filter(image img, image tmp, conv_matrix cm);
+#include <stdint.h>
+
+uint8_t N_THREADS;
+// This is the global variable that holds the number of threads to be created.
+// This number is chosen as argument of main call.
+
+void multithread_filter();
 
 #endif
