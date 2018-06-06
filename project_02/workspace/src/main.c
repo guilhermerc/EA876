@@ -70,7 +70,7 @@ int main(int argc, char ** argv)
 
         save_image("filter_test-out.jpg", &tmp);
 
-	free_image(&tmp);
+	//free_image(&tmp);
         free_image(&img);
         return 0;
 }
