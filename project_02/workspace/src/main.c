@@ -6,6 +6,7 @@
 #include "convolution_lib.h"
 #include "singlethread_filter_lib.h"
 #include "multithread_filter_lib.h"
+#include "multiprocess_filter_lib.h"
 
 int main(int argc, char ** argv)
 {
@@ -41,7 +42,7 @@ int main(int argc, char ** argv)
                 printf("Singlethread mode!\n");
                 singlethread_filter();
             }
-            else if(strcmp(argv[1], "-m") == 0)
+            else if(strcmp(argv[1], "-t") == 0)
             {
                 if(argc > 2)    
                 {
@@ -51,6 +52,17 @@ int main(int argc, char ** argv)
                 }
                 else
                     printf("Invalid usage. Please, insert the number of threads as a third argument.\n");
+            }
+            else if(strcmp(argv[1], "-p") == 0)
+            {
+                if(argc > 2)    
+                {
+                    N_PROCESSES = atoi(argv[2]);
+                    printf("Multiprocess mode with %d processes!\n", N_PROCESSES);
+                    multiprocess_filter();
+                }
+                else
+                    printf("Invalid usage. Please, insert the number of processes as a third argument.\n");
             }
         }
         else
