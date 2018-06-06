@@ -1,11 +1,14 @@
 # nproc --all
 
-./main
-
-#for dir_ in tests/*; do
-#	echo "Executando na pasta '$dir_'"
-#	echo ------------------------------
-#	for file_ in "${dir}_/*.xml"; do
-#		cat "$file_" | ./main | java Main | python3 tratamento_final.py codigo_municipal.csv
-#	done
-#done
+for file_ in imgs_test/*.jpg; do
+	echo ----------------------------------------
+        ./main "$file_" -s 
+	echo ----------------------------------------
+        echo
+        ./main "$file_" -t 4
+	echo ----------------------------------------
+        echo
+        ./main "$file_" -p 4
+	echo ----------------------------------------
+        echo
+done

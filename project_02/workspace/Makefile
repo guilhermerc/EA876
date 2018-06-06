@@ -71,5 +71,5 @@ zip: clean
 clean:
 	$(RM) ./$(TARGET_C)
 	$(RM) $(LIBRARY_DIR)/*.o
-	$(RM) ./*out.jpg
+	$(RM) ./out/imgs_test/*.jpg
 	$(RM) ./$(ZIPFILE)
