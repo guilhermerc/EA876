@@ -7,10 +7,11 @@
 #include "singlethread_filter_lib.h"
 #include "multithread_filter_lib.h"
 #include "multiprocess_filter_lib.h"
+#include "chronometer_lib.h"
 
 int main(int argc, char ** argv)
 {
-        img = open_image("tests/test.jpg");
+        img = open_image("imgs_test/test.jpg");
 
         tmp.width = img.width;
         tmp.height = img.height;
@@ -40,7 +41,8 @@ int main(int argc, char ** argv)
             if(strcmp(argv[1], "-s") == 0)
             {    
                 printf("Singlethread mode!\n");
-                singlethread_filter();
+                time_measurement(singlethread_filter, NULL);
+                //singlethread_filter();
             }
             else if(strcmp(argv[1], "-t") == 0)
             {
@@ -48,6 +50,7 @@ int main(int argc, char ** argv)
                 {
                     N_THREADS = atoi(argv[2]);
                     printf("Multithread mode with %d threads!\n", N_THREADS);
+                    time_measurement(multithread_filter, NULL);
                     multithread_filter();
                 }
                 else
@@ -59,6 +62,7 @@ int main(int argc, char ** argv)
                 {
                     N_PROCESSES = atoi(argv[2]);
                     printf("Multiprocess mode with %d processes!\n", N_PROCESSES);
+                    time_measurement(multiprocess_filter, NULL);
                     multiprocess_filter();
                 }
                 else
