@@ -6,13 +6,25 @@ void time_measurement(void * (* function)(void * args), void * args)
 {
   clock_t processor_time_used_0;
   clock_t processor_time_used_1;
+  
+  struct timeval real_time_0;
+  struct timeval real_time_1;
+  struct timeval real_time_diff;
 
+  gettimeofday(&real_time_0, NULL);
   processor_time_used_0 = clock();
 
   void * r = function(args);
 
+  gettimeofday(&real_time_1, NULL);
   processor_time_used_1 = clock();
 
-  printf("Tempo user: %f segundos\n", (double) (processor_time_used_1 -
+  timersub(&real_time_1, &real_time_0, &real_time_diff);
+
+  printf("Real time: %ld.%06ld seconds\n", real_time_diff.tv_sec,
+          real_time_diff.tv_usec);
+  /*
+  printf("User time: %f seconds\n", (double) (processor_time_used_1 -
               processor_time_used_0)/CLOCKS_PER_SEC);
+              */
 }
