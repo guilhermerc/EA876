@@ -4,7 +4,7 @@
 
 #include "image_io_lib.h"
 
-image open_image(char *nome_do_arquivo) {
+image open_image(char * nome_do_arquivo) {
     FIBITMAP *bitmapIn;
     int x, y;
     RGBQUAD color;
@@ -15,7 +15,7 @@ image open_image(char *nome_do_arquivo) {
     if (bitmapIn == 0) {
         printf("Erro! Nao achei arquivo - %s\n", nome_do_arquivo);
     } else {
-        printf("Arquivo lido corretamente!\n");
+        //printf("Arquivo lido corretamente!\n");
     }
 
     x = FreeImage_GetWidth(bitmapIn);
@@ -54,7 +54,7 @@ void save_image(char *nome_do_arquivo, image *I) {
     FIBITMAP *bitmapOut;
     RGBQUAD color;
 
-    printf("Salvando imagem %d por %d...\n", I->width, I->height);
+    //printf("Salvando imagem %d por %d...\n", I->width, I->height);
     bitmapOut = FreeImage_Allocate(I->width, I->height, 24, 0, 0, 0);
 
     for (int i=0; i<I->width; i++) {
