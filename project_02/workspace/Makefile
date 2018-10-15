@@ -29,7 +29,7 @@ TEST_SCRIPT = test.sh
 
 # Zip building macros
 ZIP = zip
-PROJECT_NAME = project
+PROJECT_NAME = trabalho_02
 ZIPFILE = $(PROJECT_NAME).zip
 EXTENSIONS = *.c *.h *.sh
 
